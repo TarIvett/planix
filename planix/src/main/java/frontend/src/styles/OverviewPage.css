@@ -1,0 +1,96 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    color: var(--text-color-primary);
+}
+
+/* The main layout grid: two rows (top nav + main content) */
+.main-wrapper {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:
+    "nav"
+    "main";
+}
+
+/* Button area (top row) */
+.main-item1 {
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main content area (bottom row) */
+.main-item2 {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Inner grid: 60% / 40% split */
+.wrapper {
+    display: grid;
+    width: 95%;
+    height: 95%;
+    grid-template-columns: 60% 40%;
+}
+
+/* Left and right items */
+.item1 {
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item2 {
+    background-color: transparent;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    margin: 0.5em;
+    grid-template-rows: 40% 30% auto;
+    grid-template-areas: "calendar" "notes" "tasks";
+}
+
+.overview-calendar{
+    grid-area: calendar;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.overview-notes{
+    grid-area: notes;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.overview-tasks{
+    grid-area: tasks;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}

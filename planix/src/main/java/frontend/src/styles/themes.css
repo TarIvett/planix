@@ -1,0 +1,49 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-color: #ABC270;
+    --text-color-primary: #473C33;
+    --text-color-secondary: #FDA769;
+    --accent-color1: #FEC866;
+    --accent-color2: #ABC270;
+    --accent-color3: #FFFDF0;
+    --btn-bg: #FDA769;
+    --btn-bg-active: #473C33;
+    --grid-color-primary: #FFFDF0;
+    --grid-color-secondary: #FEC866;
+    --grid-color-third: #CBD9A7;
+    --grid-border-color: #473C33;
+    --shadow-color: #473C33;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-color: #0C3B3E;
+    --text-color-primary: #BB8A52;
+    --text-color-secondary: #503a20;
+    --accent-color1: #BB8A52;
+    --accent-color2: #FFBA00;
+    --accent-color3: #0C3B3E;
+    --accent-color4: #6D9773;
+    --btn-bg: #E7D6C3;
+    --btn-bg-active: #BB8A52;
+    --grid-color-primary: #6D9773;
+    --grid-color-secondary: #FFBA00;
+    --grid-color-third: #CBD9A7;
+    --grid-border-color: #0C3B3E;
+    --shadow-color: #6D9773;
+}
+
+[data-theme="crazy"] {
+    /* Cozy / Warm Theme */
+    --bg-color: #fff7ed;
+    --text-color-primary: #5c4033;
+    --accent-color: #e07a5f;
+    --header-bg: #ffe8d6;
+    --card-bg: #fff1dc;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

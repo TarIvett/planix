@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react";
-import UserCard from "./components/UserCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import OverviewPage from "./pages/OverviewPage.jsx";
+import CalendarPage from "./pages/CalendarPage.jsx";
+import NotesPage from "./pages/NotesPage.jsx";
+import TasksPage from "./pages/TasksPage.jsx";
 
-function App() {
-    const [users, setUsers] = useState([]);
+export default function App() {
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/users")
-            .then((res) => res.json())
-            .then((data) => setUsers(data))
-            .catch((err) => console.error("Error fetching users:", err));
-    }, []);
 
     return (
-        <div>
-            <h1>Users</h1>
-            {users.map((user) => (
-                <UserCard key={user.id} user={user} />
-            ))}
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<OverviewPage />} />
+                <Route path="/calendar" element={<CalendarPage />} />
+                <Route path="/notes" element={<NotesPage />} />
+                <Route path="/tasks" element={<TasksPage />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
-
-export default App;

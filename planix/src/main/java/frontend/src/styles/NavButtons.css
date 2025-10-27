@@ -1,0 +1,21 @@
+button, button:hover, button:focus, button:active {
+    grid-area: nav;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color-primary);
+    border-radius: 40dvi;
+}
+
+.btn-background{
+    border-radius: 40dvi;
+    background-color: var(--btn-bg);
+    filter: drop-shadow(0.25rem 0.25rem 0.25rem var(--shadow-color));
+}
+
+.active, .active:hover, .active:focus, .active:active {
+    border: none;
+    outline: none;
+    background-color: var(--btn-bg-active);
+    color: var(--text-color-secondary);
+}
