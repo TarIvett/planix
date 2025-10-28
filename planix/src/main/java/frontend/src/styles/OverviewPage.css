@@ -54,12 +54,19 @@
 }
 
 .item2 {
-    background-color: transparent;
     display: grid;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.overview-user{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .overview{
