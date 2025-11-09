@@ -13,8 +13,16 @@
     --grid-color-third: #8A00C4;
     --grid-border-color: #333;
     --shadow-color: #aaa;
+    --border-color: #F9EBFF;
     --header-bg: #F9EBFF;
     --card-bg: #B400FF;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --brd-radius-input: 0.75dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #F9EBFF;
+    --auth-input: #fff;
+    --auth-text: #aaa;
 }
 
 [data-theme="dark"] {
@@ -34,6 +42,12 @@
     --shadow-color: #444;
     --header-bg: #1a1a1a;
     --card-bg: #B400FF;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #222;
+    --auth-input: #333;
+    --auth-text: #aaa;
 }
 
 [data-theme="autumn"] {
@@ -53,4 +67,10 @@
     --shadow-color: #2f2f2f;
     --header-bg: #351d0c;
     --card-bg: #854A1E;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #686D69;
+    --auth-input: #D6BEA9;
+    --auth-text: #555;
 }

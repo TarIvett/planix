@@ -3,6 +3,7 @@ import OverviewPage from "./pages/OverviewPage.jsx";
 import CalendarPage from "./pages/CalendarPage.jsx";
 import NotesPage from "./pages/NotesPage.jsx";
 import TasksPage from "./pages/TasksPage.jsx";
+import {UserProvider} from "./UserContext.jsx";
 
 export default function App() {
 

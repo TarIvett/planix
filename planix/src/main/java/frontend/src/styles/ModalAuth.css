@@ -1,0 +1,62 @@
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(6px);
+    background: var(--auth-overlay-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.auth-window {
+    background: var(--auth-bg);
+    padding: 32px;
+    border-radius: var(--brd-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    height: 75%;
+    width: 30%;
+}
+
+.auth-window input {
+    padding: 10px;
+    border-radius: var(--brd-radius-input);
+    background: var(--auth-input);
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color);
+}
+
+.auth-window input::placeholder {
+    color: var(--auth-text);
+}
+
+.auth-window button {
+    width: 50%;
+    padding: 10px;
+    border-radius: var(--brd-radius-btn);
+    cursor: pointer;
+    background: var(--btn-bg-active);
+    color: var(--text-color-secondary);
+}
+
+.auth-window button.auth-sign-up {
+    background: var(--btn-bg);
+    color: var(--text-color-primary);
+    border: 1px solid var(--shadow-color);
+}
+
+.auth-window button.auth-single-btn {
+    align-self: center;
+}
+
+.auth-btns {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+}
