@@ -6,10 +6,13 @@ import "../styles/themes.css";
 import User from "../components/User.jsx";
 import ModalAuth from "../components/ModalAuth.jsx";
 import { useUser } from "../UserContext.jsx";
+import GeneralSettings from "../components/GeneralSettings.jsx";
+import ProfileSettings from "../components/ProfileSettings.jsx";
 
 export default function OverviewPage() {
     const { user, loading } = useUser();
     const [authOpen, setAuthOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState("user");
 
     useEffect(() => {
         if (!loading && !user) {
@@ -24,6 +27,19 @@ export default function OverviewPage() {
             </div>
         );
     }
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case "user":
+                return <User setActiveTab={setActiveTab}/>;
+            case "general":
+                return <GeneralSettings setActiveTab={setActiveTab}/>;
+            case "profile":
+                return <ProfileSettings setActiveTab={setActiveTab}/>;
+            default:
+                return null;
+        }
+    };
 
     return (
         <div className="container">
@@ -49,7 +65,7 @@ export default function OverviewPage() {
                         </div>
 
                         <div className="item2 overview-user">
-                            <User/>
+                            {renderContent()}
                         </div>
                     </div>
                 </div>

@@ -80,13 +80,55 @@ export function UserProvider({ children }) {
         localStorage.removeItem("authToken");
     };
 
+    const updateProfile = async (profileData) => {
+        const token = localStorage.getItem("authToken");
+        const res = await fetch("http://localhost:8080/api/user/update", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(profileData)
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Update failed");
+        }
+
+        const data = await res.json();
+        setUser(data);
+        return data;
+    };
+
+    const changePassword = async (passwordData) => {
+        const token = localStorage.getItem("authToken");
+        const res = await fetch("http://localhost:8080/api/user/change-password", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(passwordData)
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Password change failed");
+        }
+
+        return await res.json();
+    };
+
     return (
         <UserContext.Provider value={{
             user,
             loading,
             signup,
             signin,
-            logout
+            logout,
+            updateProfile,
+            changePassword
         }}>
             {children}
         </UserContext.Provider>

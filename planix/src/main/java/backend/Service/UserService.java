@@ -13,7 +13,7 @@ import java.util.Optional;
 public class UserService {
 
     public final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    public final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;

@@ -33,6 +33,10 @@ public class AuthController {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
             }
 
+            if (user.getProfilePictureId() == null) {
+                user.setProfilePictureId(1); // Default
+            }
+
             User savedUser = userService.register(user);
             String token = jwtUtil.generateToken(savedUser.getEmail());
 
@@ -42,7 +46,8 @@ public class AuthController {
                     savedUser.getEmail(),
                     savedUser.getName(),
                     savedUser.getSurname(),
-                    savedUser.getNickname()
+                    savedUser.getNickname(),
+                    savedUser.getProfilePictureId()
             );
 
             return ResponseEntity.ok(response);
@@ -67,7 +72,8 @@ public class AuthController {
                                     existingUser.getEmail(),
                                     existingUser.getName(),
                                     existingUser.getSurname(),
-                                    existingUser.getNickname()
+                                    existingUser.getNickname(),
+                                    existingUser.getProfilePictureId()
                             );
                             return ResponseEntity.ok((Object) response);
                         } else {
@@ -114,7 +120,8 @@ public class AuthController {
                                 existingUser.getEmail(),
                                 existingUser.getName(),
                                 existingUser.getSurname(),
-                                existingUser.getNickname()
+                                existingUser.getNickname(),
+                                existingUser.getProfilePictureId()
                         );
                         return ResponseEntity.ok((Object) response);
                     })

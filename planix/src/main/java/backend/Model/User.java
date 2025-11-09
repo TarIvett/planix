@@ -20,6 +20,9 @@ public class User {
     private String surname;
     private String nickname;
 
+    @Column(name = "profile_picture_id")
+    private Integer profilePictureId = 1; // Default to first picture
+
     public Long getId() {
         return id;
     }
@@ -66,5 +69,13 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Integer getProfilePictureId() {
+        return profilePictureId;
+    }
+
+    public void setProfilePictureId(Integer profilePictureId) {
+        this.profilePictureId = profilePictureId;
     }
 }

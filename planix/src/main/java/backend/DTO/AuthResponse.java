@@ -7,14 +7,16 @@ public class AuthResponse {
     private String name;
     private String surname;
     private String nickname;
+    private Integer profilePictureId;
 
-    public AuthResponse(String token, Long id, String email, String name, String surname, String nickname) {
+    public AuthResponse(String token, Long id, String email, String name, String surname, String nickname, Integer profilePictureId) {
         this.token = token;
         this.id = id;
         this.email = email;
         this.name = name;
         this.surname = surname;
         this.nickname = nickname;
+        this.profilePictureId = profilePictureId;
     }
 
     public String getToken() {
@@ -63,5 +65,13 @@ public class AuthResponse {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Integer getProfilePictureId() {
+        return profilePictureId;
+    }
+
+    public void setProfilePictureId(Integer profilePictureId) {
+        this.profilePictureId = profilePictureId;
     }
 }
