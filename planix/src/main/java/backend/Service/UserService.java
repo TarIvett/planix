@@ -1,17 +1,36 @@
 package backend.Service;
 
-import backend.Model.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import backend.Model.User;
+import backend.Repository.UserRepository;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    public List<User> getAllUsers() {
-        return List.of(
-                new User(1L, "Alice", "alice@example.com"),
-                new User(2L, "Bob", "bob@example.com")
-        );
+    public final UserRepository userRepository;
+    public final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
+
+    public User register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public boolean verifyPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 }
+

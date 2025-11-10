@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="planix@localhost" uuid="c8cb68ce-29c9-4f9b-9983-0e34eb07ef44">
+    <data-source source="LOCAL" name="planix@localhost" uuid="5fe660c5-8498-4167-af4e-30adf659f4bf">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

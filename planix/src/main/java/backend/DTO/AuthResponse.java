@@ -1,27 +1,31 @@
-package backend.Model;
+package backend.DTO;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AuthResponse {
+    private String token;
     private Long id;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false)
-    private String password;
-
     private String name;
     private String surname;
     private String nickname;
+    private Integer profilePictureId;
 
-    @Column(name = "profile_picture_id")
-    private Integer profilePictureId = 1; // Default to first picture
+    public AuthResponse(String token, Long id, String email, String name, String surname, String nickname, Integer profilePictureId) {
+        this.token = token;
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.nickname = nickname;
+        this.profilePictureId = profilePictureId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public Long getId() {
         return id;
@@ -37,14 +41,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {

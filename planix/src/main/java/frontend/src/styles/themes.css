@@ -1,49 +1,76 @@
 :root {
     /* Light Theme (Default) */
-    --bg-color: #ABC270;
-    --text-color-primary: #473C33;
-    --text-color-secondary: #FDA769;
-    --accent-color1: #FEC866;
-    --accent-color2: #ABC270;
-    --accent-color3: #FFFDF0;
-    --btn-bg: #FDA769;
-    --btn-bg-active: #473C33;
-    --grid-color-primary: #FFFDF0;
-    --grid-color-secondary: #FEC866;
-    --grid-color-third: #CBD9A7;
-    --grid-border-color: #473C33;
-    --shadow-color: #473C33;
+    --bg-color: radial-gradient(ellipse at top left, #eee, #eec4ff);
+    --text-color-primary: #111;
+    --text-color-secondary: #eee;
+    --accent-color1: #B400FF;
+    --accent-color2: #D776FF;
+    --accent-color3: #F9EBFF;
+    --btn-bg: #FFFFFF;
+    --btn-bg-active: #B400FF;
+    --grid-color-primary: #fff;
+    --grid-color-secondary: #D776FF;
+    --grid-color-third: #8A00C4;
+    --grid-border-color: #333;
+    --shadow-color: #aaa;
+    --border-color: #F9EBFF;
+    --header-bg: #F9EBFF;
+    --card-bg: #B400FF;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --brd-radius-input: 0.75dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #F9EBFF;
+    --auth-input: #fff;
+    --auth-text: #aaa;
 }
 
 [data-theme="dark"] {
     /* Dark Theme */
-    --bg-color: #0C3B3E;
-    --text-color-primary: #BB8A52;
-    --text-color-secondary: #503a20;
-    --accent-color1: #BB8A52;
-    --accent-color2: #FFBA00;
-    --accent-color3: #0C3B3E;
-    --accent-color4: #6D9773;
-    --btn-bg: #E7D6C3;
-    --btn-bg-active: #BB8A52;
-    --grid-color-primary: #6D9773;
-    --grid-color-secondary: #FFBA00;
-    --grid-color-third: #CBD9A7;
-    --grid-border-color: #0C3B3E;
-    --shadow-color: #6D9773;
+    --bg-color: radial-gradient(ellipse at top left, #3B0053, #1a1a1a);
+    --text-color-primary: #eee;
+    --text-color-secondary: #111;
+    --accent-color1: #B400FF;
+    --accent-color2: #D776FF;
+    --accent-color3: #6F009D;
+    --btn-bg: #333;
+    --btn-bg-active: #B400FF;
+    --grid-color-primary: #333;
+    --grid-color-secondary: #D776FF;
+    --grid-color-third: #8A00C4;
+    --grid-border-color: #ddd;
+    --shadow-color: #444;
+    --header-bg: #1a1a1a;
+    --card-bg: #B400FF;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #222;
+    --auth-input: #333;
+    --auth-text: #aaa;
 }
 
-[data-theme="crazy"] {
-    /* Cozy / Warm Theme */
-    --bg-color: #fff7ed;
-    --text-color-primary: #5c4033;
-    --accent-color: #e07a5f;
-    --header-bg: #ffe8d6;
-    --card-bg: #fff1dc;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+[data-theme="autumn"] {
+    /* Autumn Theme */
+    --bg-color: radial-gradient(ellipse at top left, #000, #351d0c);
+    --text-color-primary: #eee;
+    --text-color-secondary: #111;
+    --accent-color2: #A5663D;
+    --accent-color3: #854A1E;
+    --accent-color1: #D6C0A9;
+    --btn-bg: #854A1E;
+    --btn-bg-active: #D6BEA9;
+    --grid-color-secondary: #854A1E;
+    --grid-color-third: #D6BEA9;
+    --grid-color-primary: #686D69;
+    --grid-border-color: #ddd;
+    --shadow-color: #2f2f2f;
+    --header-bg: #351d0c;
+    --card-bg: #854A1E;
+    --brd-radius: 1.5dvi;
+    --brd-radius-btn: 40dvi;
+    --auth-overlay-background: rgba(0, 0, 0, 0.6);
+    --auth-bg: #686D69;
+    --auth-input: #D6BEA9;
+    --auth-text: #555;
 }
