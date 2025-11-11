@@ -1,5 +1,6 @@
 import NavButtons from "../components/NavButtons.jsx";
 import React from "react";
+import "../components/NavButtons.jsx"
 
 export default function NotesPage() {
     return (

@@ -1,13 +1,10 @@
 import React from "react";
 import NavButtons from "../components/NavButtons.jsx";
 import TaskNavButtons from "../components/TaskNavButtons.jsx"
+import "../styles/TaskPage.css"
 import AddTaskButton from "../components/AddTaskButton.jsx";
 
-import "../styles/TaskPage.css"
-
-export default function TasksPage() {
-
-
+export default function TasksWorkPage() {
     return (
         <div className="task-container">
             <div className="task-main-wrapper">
@@ -23,9 +20,7 @@ export default function TasksPage() {
                         </div>
                         <div className="item2Task"></div>
                     </div>
-                    <div className="task-wrapper2">
-
-                    </div>
+                    <div className="task-wrapper2"></div>
 
 
 

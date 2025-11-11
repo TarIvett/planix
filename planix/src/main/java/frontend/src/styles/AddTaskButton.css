@@ -1,0 +1,28 @@
+.add-task-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    left: auto;
+
+    background-color: var(--btn-bg);
+    color: var(--text-color-primary);
+    border: none;
+    border-radius: 2.5rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    margin:4%;
+}
+
+.add-task-btn:hover {
+    background-color: var(--btn-bg-active);
+    color: var(--text-color-secondary);
+    transform: translateY(-1px);
+}
+
+.add-task-btn:active {
+    transform: translateY(1px);
+}
