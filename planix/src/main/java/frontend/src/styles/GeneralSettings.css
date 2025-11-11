@@ -1,0 +1,63 @@
+.general-container {
+    display: grid;
+    grid-template-rows: 15% 70% 15%;
+    width: 100%;
+    height: 100%;
+    color: var(--text-color-primary);
+    grid-template-areas: "title" "settings" "back-btn";
+}
+
+.general-settings {
+    grid-area: settings;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.general-settings-title {
+    grid-area: title;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1.5rem;
+}
+
+.general-settings-back-btn {
+    grid-area: back-btn;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.general-settings h3 {
+    margin: 20px 0 10px 0;
+    font-size: 18px;
+    color: var(--text-color-primary);
+    width: 90%;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.select-pfp {
+    width: 90%;
+    padding: 8px 12px;
+    border-radius: var(--brd-radius-btn);
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--accent-color1);
+    color: var(--text-color-secondary);
+}
+
+.btn-back, .btn-back:hover, .btn-back:focus, .btn-back:active {
+    background-color: var(--accent-color1);
+    color: var(--text-color-secondary);
+    width: 90%;
+    margin: 1em;
+    border-radius: var(--brd-radius-btn);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+

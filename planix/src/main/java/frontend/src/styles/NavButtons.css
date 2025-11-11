@@ -5,11 +5,11 @@
     border: none;
     outline: none;
     color: var(--text-color-primary);
-    border-radius: 40dvi;
+    border-radius: var(--brd-radius-btn);
 }
 
 .btn-background{
-    border-radius: 40dvi;
+    border-radius: var(--brd-radius-btn);
     background-color: var(--btn-bg);
     filter: drop-shadow(0.25rem 0.25rem 0.25rem var(--shadow-color));
 }

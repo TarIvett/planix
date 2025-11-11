@@ -1,28 +1,44 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 import "../components/NavButtons.jsx"
 import "../styles/OverviewPage.css";
-import "../styles/themes.css";
 import NavButtons from "../components/NavButtons.jsx";
+import "../styles/themes.css";
+import User from "../components/User.jsx";
+import ModalAuth from "../components/ModalAuth.jsx";
+import { useUser } from "../UserContext.jsx";
+import GeneralSettings from "../components/GeneralSettings.jsx";
+import ProfileSettings from "../components/ProfileSettings.jsx";
 
 export default function OverviewPage() {
-    const themes = ["light", "dark", "crazy"];
-    const labels = {
-        light: "🌞 Light Mode",
-        dark: "🌙 Dark Mode",
-        crazy: "☕ Cozy Mode",
-    };
-
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    const { user, loading } = useUser();
+    const [authOpen, setAuthOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState("user");
 
     useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+        if (!loading && !user) {
+            setAuthOpen(true);
+        }
+    }, [loading, user]);
 
-    const toggleTheme = () => {
-        const currentIndex = themes.indexOf(theme);
-        const nextTheme = themes[(currentIndex + 1) % themes.length];
-        setTheme(nextTheme);
+    if (loading) {
+        return (
+            <div className="container">
+                <div className="loading">Loading...</div>
+            </div>
+        );
+    }
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case "user":
+                return <User setActiveTab={setActiveTab}/>;
+            case "general":
+                return <GeneralSettings setActiveTab={setActiveTab}/>;
+            case "profile":
+                return <ProfileSettings setActiveTab={setActiveTab}/>;
+            default:
+                return null;
+        }
     };
 
     return (
@@ -48,40 +64,16 @@ export default function OverviewPage() {
                             </div>
                         </div>
 
-                        <div className="item2">
-                            <header
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    padding: "0.5rem",
-                                    background: "var(--header-bg)",
-                                }}
-                            >
-                                <h1>My Planner</h1>
-                                <button
-                                    onClick={toggleTheme}
-                                    style={{
-                                        background: "var(--accent-color)",
-                                        color: "var(--bg-color)",
-                                        border: "none",
-                                        borderRadius: "20px",
-                                        padding: "0.5rem 1rem",
-                                        cursor: "pointer",
-                                        fontWeight: "600",
-                                    }}
-                                >
-                                    {labels[theme]}
-                                </button>
-                            </header>
-                            <p>Item2</p>
-                            <div className="overview-user">
-                                {/*<User/>*/}
-                            </div>
+                        <div className="item2 overview-user">
+                            {renderContent()}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {authOpen && !user && (
+                <ModalAuth onClose={() => setAuthOpen(false)} />
+            )}
         </div>
     );
 }
