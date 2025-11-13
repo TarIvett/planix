@@ -1,0 +1,73 @@
+.mini-month {
+    display: grid;
+    height: 92%;
+    grid-template-rows: 15% 10% auto;
+    align-items: center;
+    background-color: var(--grid-color-primary);
+    border-radius: 8px;
+    padding: 0.5em;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.mini-month-name {
+    font-size: 0.8em;
+    margin: 0.3em 0;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-color-primary);
+}
+
+.mini-month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+    align-items: center;
+    text-align: center;
+    grid-auto-rows: 20px;
+    gap: 2px;
+    width: 100%;
+}
+
+.mini-day {
+    width: 1.6em;
+    height: 1.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    place-self: center;
+    text-align: center;
+    border-radius: 50%; /* makes it a circle */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--text-color-primary);
+}
+
+
+.mini-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--accent-color1);
+}
+
+.mini-weekday {
+    font-size: 0.6em;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-color1);
+}
+
+.mini-day:hover {
+    background-color: var(--accent-color3); /* light gray on hover */
+}
+
+.mini-day.today {
+    background-color: var(--accent-color2);
+    color: var(--text-color-secondary);
+}

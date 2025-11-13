@@ -8,11 +8,13 @@ import ModalAuth from "../components/ModalAuth.jsx";
 import { useUser } from "../UserContext.jsx";
 import GeneralSettings from "../components/GeneralSettings.jsx";
 import ProfileSettings from "../components/ProfileSettings.jsx";
+import MiniMonth from "../components/Views/MiniMonthView.jsx";
 
 export default function OverviewPage() {
     const { user, loading } = useUser();
     const [authOpen, setAuthOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("user");
+    const [currentDate, setCurrentDate] = useState(new Date());
 
     useEffect(() => {
         if (!loading && !user) {
@@ -54,6 +56,9 @@ export default function OverviewPage() {
                             <div className="overview">
                                 <div className="overview-calendar">
                                     <h1>Calendar</h1>
+                                    <MiniMonth currentDate={currentDate}
+                                               setCurrentDate={setCurrentDate}
+                                    ></MiniMonth>
                                 </div>
                                 <div className="overview-notes">
                                     <h1>Notes</h1>

@@ -1,0 +1,74 @@
+.week-view {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0.25rem 0.25rem 0.30rem var(--shadow-color));
+    overflow: hidden;
+}
+
+.week-grid-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: var(--grid-color-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.week-header {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    background-color: var(--grid-color-secondary);
+}
+
+.week-corner {
+
+}
+
+.week-day-header {
+    text-align: center;
+    padding: 5px;
+    border-top: 0 dashed var(--grid-border-color);
+    border-left: 0 dashed var(--grid-border-color);
+    font-weight: bold;
+}
+
+
+.week-body {
+    flex: 1;
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color2) var(--accent-color1);
+}
+
+
+.week-hour-row {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    height: 80px;
+}
+
+
+.week-hour-label {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    background-color: var(--grid-color-secondary);
+    color: var(--text-color-primary);
+    border-bottom: 1px dashed var(--grid-border-color);
+}
+
+.week-hour-cell {
+    padding: 10px;
+    border-top: 1px dashed var(--grid-border-color);
+    border-left: 1px dashed var(--grid-border-color);
+    position: relative;
+}
