@@ -1,0 +1,92 @@
+.user-container {
+    display: grid;
+    grid-template-rows: 30% 70%;
+    width: 100%;
+    height: 100%;
+    color: var(--text-color-primary);
+    grid-template-areas: "profile" "settings";
+}
+
+.user-profile {
+    grid-area: profile;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    grid-template-areas: "pfp name";
+}
+
+.user-pfp {
+    grid-area: pfp;
+    place-self: center;
+    position: relative;
+    width: 85%;
+    padding-bottom: 85%;
+    overflow: hidden;
+    border-radius: var(--brd-radius);
+    filter: drop-shadow(0.25rem 0.25rem 0.25rem var(--shadow-color));
+}
+
+.user-pfp img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    grid-area: name;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    align-self: center;
+}
+
+.user-name p{
+    align-self: flex-start;
+}
+
+.btn-profile, .btn-profile:hover, .btn-profile:focus, .btn-profile:active {
+    background-color: var(--accent-color1);
+    color: var(--text-color-secondary);
+    width: 90%;
+    border-radius: var(--brd-radius-btn);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.user-settings {
+    grid-area: settings;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-settings, .btn-settings:hover, .btn-settings:focus, .btn-settings:active {
+    background-color: var(--accent-color1);
+    color: var(--text-color-secondary);
+    width: 90%;
+    margin: 1em;
+    border-radius: var(--brd-radius-btn);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-log-out{
+    background-color: var(--accent-color1);
+    color: var(--text-color-secondary);
+    width: 90%;
+    margin: 1em;
+    border-radius: var(--brd-radius-btn);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    align-self: center;
+}
+
+

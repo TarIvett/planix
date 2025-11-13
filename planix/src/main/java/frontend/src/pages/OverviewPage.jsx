@@ -1,11 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../components/NavButtons.jsx"
 import "../styles/OverviewPage.css";
 import NavButtons from "../components/NavButtons.jsx";
 import "../styles/themes.css";
 import User from "../components/User.jsx";
+import ModalAuth from "../components/ModalAuth.jsx";
+import { useUser } from "../UserContext.jsx";
+import GeneralSettings from "../components/GeneralSettings.jsx";
+import ProfileSettings from "../components/ProfileSettings.jsx";
 
 export default function OverviewPage() {
+    const { user, loading } = useUser();
+    const [authOpen, setAuthOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState("user");
+
+    useEffect(() => {
+        if (!loading && !user) {
+            setAuthOpen(true);
+        }
+    }, [loading, user]);
+
+    if (loading) {
+        return (
+            <div className="container">
+                <div className="loading">Loading...</div>
+            </div>
+        );
+    }
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case "user":
+                return <User setActiveTab={setActiveTab}/>;
+            case "general":
+                return <GeneralSettings setActiveTab={setActiveTab}/>;
+            case "profile":
+                return <ProfileSettings setActiveTab={setActiveTab}/>;
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className="container">
             <div className="main-wrapper main-content">
@@ -29,14 +64,16 @@ export default function OverviewPage() {
                             </div>
                         </div>
 
-                        <div className="item2">
-                            <div className="overview-user">
-                                <User/>
-                            </div>
+                        <div className="item2 overview-user">
+                            {renderContent()}
                         </div>
                     </div>
                 </div>
             </div>
+
+            {authOpen && !user && (
+                <ModalAuth onClose={() => setAuthOpen(false)} />
+            )}
         </div>
     );
 }
