@@ -1,7 +1,16 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import "../styles/CalendarHeader.css";
 
-export default function CalendarHeader({ view, currentDate, setCurrentDate, setView}) {
+export default function CalendarHeader({ view, currentDate, setCurrentDate, setView }) {
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const handleCreateClick = () => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("mode", "create");
+        setSearchParams(newParams);
+    };
+
     function goPrev(view, currentDate, setCurrentDate) {
         const newDate = new Date(currentDate);
         switch(view) {
@@ -55,9 +64,8 @@ export default function CalendarHeader({ view, currentDate, setCurrentDate, setV
                 });
 
             case "week": {
-                // Get the start and end of the week
-                const day = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ...
-                const diff = day === 0 ? -6 : 1 - day; // if Sunday, go back 6 days, else go back to Monday
+                const day = currentDate.getDay();
+                const diff = day === 0 ? -6 : 1 - day;
                 const startOfWeek = new Date(currentDate);
                 startOfWeek.setDate(currentDate.getDate() + diff);
 
@@ -101,7 +109,7 @@ export default function CalendarHeader({ view, currentDate, setCurrentDate, setV
             </div>
 
             <div className="header-section add-event">
-                <button className="btn-add">+ Create event</button>
+                <button className="btn-add" onClick={handleCreateClick}>+ Create event</button>
             </div>
         </header>
     );

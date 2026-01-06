@@ -1,20 +1,19 @@
 import React from "react";
 import "../../styles/Views/DayView.css";
+import CalendarEvent from "../CalendarEvent.jsx";
 
-export default function DayView({ currentDate }) {
+export default function DayView({ currentDate, events = [], onEventClick }) {
     const hours = Array.from({ length: 24 }, (_, idx) => idx);
 
-    // Format the current date as "Weekday DD"
-    const dayLabel = currentDate.toLocaleDateString(undefined, {
-        weekday: "long",
-        day: "numeric",
-        month: "short", // optional if you want month too
+    const todaysEvents = events.filter((event) => {
+        if (!event.date) return false;
+        const eventDate = new Date(event.date);
+        return eventDate.toDateString() === currentDate.toDateString();
     });
 
     return (
         <div className="day-view">
             <div className="day-grid-wrapper">
-                {/* Hour labels column */}
                 <div className="day-hour-column">
                     {hours.map((hour) => (
                         <div key={hour} className="day-hour-label">
@@ -23,12 +22,18 @@ export default function DayView({ currentDate }) {
                     ))}
                 </div>
 
-                {/* Day events column */}
-                <div className="day-events-column">
+                <div className="day-events-column" style={{position: 'relative'}}>
                     {hours.map((hour) => (
-                        <div key={hour} className="day-hour-slot">
-                            {/* Events will go here */}
-                        </div>
+                        <div key={hour} className="day-hour-slot"/>
+                    ))}
+
+                    {todaysEvents.map((event) => (
+                        <CalendarEvent
+                            key={event.id || Math.random()}
+                            event={event}
+                            slotHeightVh={3}
+                            onClick={() => {onEventClick(event);}}
+                        />
                     ))}
                 </div>
             </div>

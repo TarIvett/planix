@@ -45,3 +45,33 @@
     background-color: var(--accent-color2);
     color: var(--text-color-secondary);
 }
+
+.month-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.month-event-bar {
+    font-size: 10px;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: opacity 0.2s;
+}
+
+.month-event-bar:hover {
+    opacity: 0.9;
+}
+
+
+.month-day.empty {
+    background-color: #f9f9f9;
+    cursor: default;
+}

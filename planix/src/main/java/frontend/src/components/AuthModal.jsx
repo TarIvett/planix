@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "../styles/ModalAuth.css";
+import "../styles/AuthModal.css";
 import { useUser } from "../UserContext.jsx";
 
-export default function ModalAuth({ onClose }) {
+export default function AuthModal({ onClose }) {
     const { signup, signin } = useUser();
     const [step, setStep] = useState("welcome");
     const [nickname, setNickname] = useState("");

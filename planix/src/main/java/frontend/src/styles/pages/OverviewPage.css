@@ -51,17 +51,32 @@
 }
 
 .item2 {
-    display: grid;
+    display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
+.overview-2{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 55% 40%;
+    grid-template-areas: "settings" "calendar";
+}
+
+.overview-calendar{
+    grid-area: calendar;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
 
 .overview-user{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: var(--accent-color3);
     border-radius: var(--brd-radius);
     width: 100%;
@@ -75,16 +90,8 @@
     width: 100%;
     height: 100%;
     margin: 0.5em;
-    grid-template-rows: 40% 30% auto;
-    grid-template-areas: "calendar" "notes" "tasks";
-}
-
-.overview-calendar{
-    grid-area: calendar;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "notes" "tasks";
 }
 
 .overview-notes{

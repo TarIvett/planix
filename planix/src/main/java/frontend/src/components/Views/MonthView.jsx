@@ -1,7 +1,8 @@
 import React from "react";
 import "../../styles/Views/MonthView.css";
 
-export default function MonthView({ currentDate, setCurrentDate, setView }) {
+
+export default function MonthView({ currentDate, setCurrentDate, setView, events = [], onEventClick }) {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
 
@@ -24,6 +25,17 @@ export default function MonthView({ currentDate, setCurrentDate, setView }) {
 
     const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+
+    const getEventsForDay = (dayNumber) => {
+        if (!dayNumber) return [];
+        const targetDate = new Date(year, month, dayNumber);
+        return events.filter(event => {
+            if (!event.date) return false;
+            const eventDate = new Date(event.date);
+            return eventDate.toDateString() === targetDate.toDateString();
+        });
+    };
+
     return (
         <div className="month-timetable">
             <div className="month-header">
@@ -42,10 +54,12 @@ export default function MonthView({ currentDate, setCurrentDate, setView }) {
                             const isToday =
                                 dateObj && dateObj.toDateString() === new Date().toDateString();
 
+                            const dayEvents = getEventsForDay(d);
+
                             return (
                                 <div
                                     key={j}
-                                    className={`month-day ${isToday ? "today" : ""}`}
+                                    className={`month-day ${isToday ? "today" : ""} ${!d ? "empty" : ""}`}
                                     onClick={() => {
                                         if (dateObj) {
                                             setCurrentDate(dateObj);
@@ -53,7 +67,27 @@ export default function MonthView({ currentDate, setCurrentDate, setView }) {
                                         }
                                     }}
                                 >
-                                    {d || ""}
+
+                                    {d && <span className="day-number">{d}</span>}
+
+
+                                    {d && dayEvents.length > 0 && (
+                                        <div className="month-events-list">
+                                            {dayEvents.map((event) => (
+                                                <div
+                                                    key={event.id}
+                                                    className="month-event-bar"
+                                                    style={{ backgroundColor: event.color || '#a855f7' }}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        onEventClick(event);
+                                                    }}
+                                                >
+                                                    {event.title}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             );
                         })}

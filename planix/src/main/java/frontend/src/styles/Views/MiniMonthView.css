@@ -19,7 +19,7 @@
 
 .mini-month-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+    grid-template-columns: repeat(7, 1fr);
     align-items: center;
     text-align: center;
     grid-auto-rows: 20px;
@@ -64,10 +64,15 @@
 }
 
 .mini-day:hover {
-    background-color: var(--accent-color3); /* light gray on hover */
+    background-color: var(--accent-color3);
 }
 
 .mini-day.today {
     background-color: var(--accent-color2);
+    color: var(--text-color-secondary);
+}
+
+.mini-day.event {
+    background-color: var(--event-color);
     color: var(--text-color-secondary);
 }
