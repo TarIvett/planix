@@ -1,54 +1,75 @@
-import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/TaskNavButtons.css";
 
-export default function TaskNavButtons() {
-    const navigate = useNavigate();
-    const {pathname} = useLocation();
+export default function TaskNavButtons({ onCategoryChange }) {
+    const { pathname } = useLocation();
+    const [activeCategory, setActiveCategory] = useState("all");
 
-    const isAll      = pathname === "/tasks";
-    const isStudy    = pathname.startsWith("/tasks/study");
-    const isWork     = pathname.startsWith("/tasks/work");
-    const isTravel   = pathname.startsWith("/tasks/travel");
-    const isPersonal = pathname.startsWith("/tasks/personal");
+    useEffect(() => {
+        if (pathname === "/tasks") {
+            setActiveCategory("all");
+        } else if (pathname.startsWith("/tasks/study")) {
+            setActiveCategory("study");
+        } else if (pathname.startsWith("/tasks/work")) {
+            setActiveCategory("work");
+        } else if (pathname.startsWith("/tasks/travel")) {
+            setActiveCategory("travel");
+        } else if (pathname.startsWith("/tasks/personal")) {
+            setActiveCategory("personal");
+        }
+    }, [pathname]);
+
+    const handleCategoryClick = (category) => {
+        setActiveCategory(category);
+
+        if (onCategoryChange) {
+            onCategoryChange(category);
+        }
+
+        if (category === "all") {
+            window.history.replaceState(null, "", "/tasks");
+        } else {
+            window.history.replaceState(null, "", `/tasks/${category}`);
+        }
+    };
 
     return (
         <div className="task-nav">
             <button
-                onClick={() => navigate("/tasks")}
-                className={`nav-button ${isAll ? "active" : ""}`}
+                onClick={() => handleCategoryClick("all")}
+                className={`nav-button ${activeCategory === "all" ? "active" : ""}`}
             >
                 All
             </button>
 
             <button
-                onClick={() => navigate("/tasks/study")}
-                className={`nav-button ${isStudy ? "active" : ""}`}
+                onClick={() => handleCategoryClick("study")}
+                className={`nav-button ${activeCategory === "study" ? "active" : ""}`}
             >
-                {/* poți lăsa fără icon dacă vrei și mai simplu */}
                 <span className="chip-ico" aria-hidden>📘</span>
                 Study
             </button>
 
             <button
-                onClick={() => navigate("/tasks/work")}
-                className={`nav-button ${isWork ? "active" : ""}`}
+                onClick={() => handleCategoryClick("work")}
+                className={`nav-button ${activeCategory === "work" ? "active" : ""}`}
             >
                 <span className="chip-ico" aria-hidden>🧰</span>
                 Work
             </button>
 
             <button
-                onClick={() => navigate("/tasks/travel")}
-                className={`nav-button ${isTravel ? "active" : ""}`}
+                onClick={() => handleCategoryClick("travel")}
+                className={`nav-button ${activeCategory === "travel" ? "active" : ""}`}
             >
                 <span className="chip-ico" aria-hidden>✈️</span>
                 Travel
             </button>
 
             <button
-                onClick={() => navigate("/tasks/personal")}
-                className={`nav-button ${isPersonal ? "active" : ""}`}
+                onClick={() => handleCategoryClick("personal")}
+                className={`nav-button ${activeCategory === "personal" ? "active" : ""}`}
             >
                 <span className="chip-ico" aria-hidden>👤</span>
                 Personal
