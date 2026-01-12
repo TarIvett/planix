@@ -1,3 +1,4 @@
+// backend/Controller/NoteController.java
 package backend.Controller;
 
 import backend.Model.Note;
@@ -16,12 +17,9 @@ public class NoteController {
 
     public NoteController(NoteService service) { this.service = service; }
 
-    // GET /api/notes?category=Personal&favorite=true
     @GetMapping
-    public List<Note> all(
-            @RequestParam Optional<String> category,
-            @RequestParam Optional<Boolean> favorite
-    ) {
+    public List<Note> all(@RequestParam Optional<String> category,
+                          @RequestParam Optional<Boolean> favorite) {
         return service.getAll(category, favorite);
     }
 

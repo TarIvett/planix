@@ -1,7 +1,11 @@
+// backend/Service/NoteService.java
 package backend.Service;
 
 import backend.Model.Note;
-import backend.Model.NoteRepository;
+import backend.Model.User;
+import backend.Repository.NoteRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,40 +15,69 @@ import java.util.Optional;
 public class NoteService {
 
     private final NoteRepository repo;
+    private final AuthUserProvider auth;
 
-    public NoteService(NoteRepository repo) {
+    @PersistenceContext
+    private EntityManager em;
+
+    public NoteService(NoteRepository repo, AuthUserProvider auth) {
         this.repo = repo;
+        this.auth = auth;
     }
 
     public List<Note> getAll(Optional<String> category, Optional<Boolean> favorite) {
+        Long uid = auth.currentUser().getId();
+
         if (category.isPresent() && favorite.isPresent()) {
-            return repo.findByCategoryAndIsFavorite(category.get(), favorite.get());
+            return repo.findByUserIdAndCategoryAndIsFavoriteOrderByUpdatedAtDesc(uid, category.get(), favorite.get());
         }
         if (category.isPresent()) {
-            return repo.findByCategory(category.get());
+            return repo.findByUserIdAndCategoryOrderByUpdatedAtDesc(uid, category.get());
         }
         if (favorite.orElse(false)) {
-            return repo.findByIsFavoriteTrue();
+            return repo.findByUserIdAndIsFavoriteTrueOrderByUpdatedAtDesc(uid);
         }
-        return repo.findAll();
+        return repo.findByUserIdOrderByUpdatedAtDesc(uid);
     }
 
     public Note getById(Long id) {
-        return repo.findById(id).orElseThrow();
+        Long uid = auth.currentUser().getId();
+        return repo.findByIdAndUserId(id, uid).orElseThrow();
     }
 
     public Note create(Note n) {
-        // createdAt/updatedAt se setează automat
+        Long uid = auth.currentUser().getId();
+        User ref = em.getReference(User.class, uid);
+        n.setUser(ref);
+
+        n.setTitle(n.getTitle() == null ? "" : n.getTitle().trim());
+        n.setCategory(normalizeCategory(n.getCategory()));
+        n.setContent(n.getContent() == null ? "" : n.getContent()); // NU folosim jsoup
+
         return repo.save(n);
     }
 
     public Note update(Long id, Note n) {
-        // asigură-te că actualizezi rândul corect
-        n.setId(id);
-        return repo.save(n);
+        Note existing = getById(id); // 404 dacă nu aparține userului
+
+        existing.setTitle(n.getTitle() == null ? "" : n.getTitle().trim());
+        existing.setCategory(normalizeCategory(n.getCategory()));
+        existing.setFavorite(n.isFavorite());
+        existing.setContent(n.getContent() == null ? "" : n.getContent());
+
+        return repo.save(existing);
     }
 
     public void delete(Long id) {
-        repo.deleteById(id);
+        Note existing = getById(id);
+        repo.delete(existing);
+    }
+
+    private String normalizeCategory(String category) {
+        if (category == null || category.isBlank()) return "Personal";
+        return switch (category) {
+            case "Study", "Work", "Travel", "Personal" -> category;
+            default -> "Personal";
+        };
     }
 }

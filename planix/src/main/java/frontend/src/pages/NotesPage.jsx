@@ -5,6 +5,7 @@ import NoteCard from "../components/NoteCard.jsx";
 import AddNote from "../components/AddNote.jsx";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { authFetch } from "../api/auth.js";
 
 export default function NotesPage() {
     const location = useLocation();
@@ -19,7 +20,6 @@ export default function NotesPage() {
     else if (location.pathname === "/notes/travel") categoryFilter = "Travel";
     else if (location.pathname === "/notes/personal") categoryFilter = "Personal";
 
-    // Fetch notes data
     useEffect(() => {
         const fetchNotes = async () => {
             try {
@@ -27,7 +27,7 @@ export default function NotesPage() {
                 if (categoryFilter) url.searchParams.set("category", categoryFilter);
                 if (onlyFavorites !== null) url.searchParams.set("favorite", String(onlyFavorites));
 
-                const res = await fetch(url.toString());
+                const res = await authFetch(url.toString()); // 👈 folosește tokenul
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 setNotes(data);
@@ -38,6 +38,7 @@ export default function NotesPage() {
             }
         };
 
+        setLoading(true);
         fetchNotes();
     }, [categoryFilter, onlyFavorites]);
 
@@ -47,18 +48,18 @@ export default function NotesPage() {
         <div className="containerNotes">
             <div className="main-wrapperNotes ">
                 <div className="main-item1Notes">
-                    <NavButtons/>
+                    <NavButtons />
                 </div>
 
                 <div className="main-item2Notes">
+
                     <div className="item1Notes">
-                        <CategoryBar/>
+                        <CategoryBar />
                     </div>
 
                     <div className="item2Notes">
-                        <AddNote/> {/* Primul element în grid */}
 
-                        {/* Randăm fiecare notiță ca element SEPARAT în grid */}
+                        <AddNote />
                         {notes.map((note) => (
                             <NoteCard
                                 key={note.id}
@@ -66,6 +67,7 @@ export default function NotesPage() {
                                 onUpdate={setNotes}
                             />
                         ))}
+
                     </div>
                 </div>
             </div>

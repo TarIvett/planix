@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* Inner grid: 60% / 40% split */
@@ -50,14 +51,6 @@
     align-items: center;
 }
 
-.item2NotesEdit {
-    background-color: transparent;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
 
 /* Container pentru lista de notițe */
 .notes-list-container {
@@ -123,4 +116,42 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    overflow: hidden; /* Important: nu lăsa pagina să crească */
+}
+
+/* styles/EditNote.css */
+
+/* În styles/EditNote.css */
+
+.back-btn {
+    /* --- ADAUGĂ ACESTE LINII PENTRU POZIȚIONARE --- */
+    position: absolute;
+    left: 40px; /* Distanța față de marginea stângă */
+    top: 50%;   /* Îl punem la jumătatea înălțimii */
+    transform: translateY(-50%); /* Îl centrăm perfect vertical */
+
+    /* --- Stilurile vechi rămân la fel --- */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--btn-bg);
+    color: var(--text-color-primary);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    z-index: 10; /* Ca să fim siguri că stă deasupra */
+}
+
+.back-btn:hover {
+    background: var(--accent-color1);
+    color: #fff;
+    /* Scoatem transform-ul vechi ca să nu strice centrarea verticală */
+    /* Folosim translate3d sau combinăm translateY cu translateX */
+    transform: translateY(-50%) translateX(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }

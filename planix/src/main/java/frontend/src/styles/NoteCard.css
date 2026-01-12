@@ -16,7 +16,7 @@
     --note-edge: var(--accent-color3);
     --note-shadow: 0 6px 20px rgba(255, 255, 255, 0.08);
     --note-text: var(--text-color-primary);
-    --note-muted: var(--grid-color-third);
+    --note-muted: var(--text-color-primary);
     --note-font: 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -134,9 +134,16 @@
 }
 
 .icon-btn.active {
-    background: var(--btn-bg, #ffe3e6);
-}
+    /* Era #ffe3e6 (prea deschis). Punem un roz mai saturat: */
+    background: #ffcbd1;
 
+    /* Adăugăm și un contur fin pentru a-l delimita clar de fundalul alb */
+    border: 1px solid #ff99a8;
+
+    /* Efect de ridicare pentru a arăta că e selectat */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.15);
+}
 .icon-btn[disabled] {
     opacity: 0.6;
     cursor: not-allowed;
@@ -157,4 +164,25 @@
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
     }
 
+}
+
+/* Adaugă asta dacă vrei DOAR categoria să fie colorată (ex: mov), iar data să rămână gri */
+.note-category {
+    color: var(--accent-color1); /* Sau orice altă culoare dorești */
+    font-weight: 800; /* O facem și mai groasă */
+    opacity: 1; /* Scoatem transparența pentru a fi foarte vizibilă */
+    /* ... restul proprietăților existente ... */
+}
+
+.note-time {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+
+    /* --- MODIFICĂRI PENTRU VIZIBILITATE --- */
+    color: var(--accent-color1); /* Acum va avea culoarea temei (ex: mov, maro, etc.) */
+    font-weight: 700;            /* Text îngroșat (era normal înainte) */
+    opacity: 1;                  /* Complet opac (fără transparență) */
+
+    font-family: var(--note-font);
 }
