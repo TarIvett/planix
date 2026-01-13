@@ -1,0 +1,62 @@
+.day-view {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    filter: drop-shadow(0.25rem 0.25rem 0.30rem var(--shadow-color));
+}
+
+.day-grid-wrapper {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 5% 95%;
+    grid-template-areas:
+            "ho ev";
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.day-hour-column {
+    grid-area: ho;
+    width: 100%;
+    background-color: var(--grid-color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-bottom: 1px dashed var(--grid-border-color);
+}
+
+.day-hour-label {
+    height: 3vh;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--text-color-primary);
+    border-bottom: 1px dashed var(--grid-border-color);
+}
+
+.day-events-column {
+    grid-area: ev;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    background-color: var(--grid-color-primary);
+    border-left: 1px dashed var(--grid-border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.day-hour-slot {
+    width: 100%;
+    height: 3vh;
+    border-bottom: 1px dashed var(--grid-border-color);
+    position: relative;
+}

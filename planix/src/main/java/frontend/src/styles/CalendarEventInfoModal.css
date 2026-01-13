@@ -1,0 +1,102 @@
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content.info-modal {
+    background: var(--accent-color3);
+    width: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-header-strip {
+    height: 60px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.close-btn-white {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.close-btn-white:hover {
+    opacity: 1;
+}
+
+.info-body {
+    padding: 24px;
+}
+
+.info-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-color-primary);
+    font-size: 1.5rem;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.info-description {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: white;
+    border-radius: 6px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.info-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-edit {
+    background-color: white;
+    color: #333;
+}
+.btn-edit:hover { background-color: #e0e0e0; }
+
+.btn-delete {
+    background-color: var(--accent-color1);
+    color: white;
+}
+.btn-delete:hover { background-color: var(--accent-color2); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

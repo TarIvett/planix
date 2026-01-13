@@ -1,0 +1,107 @@
+:root {
+    --time-col-width: 60px;
+}
+
+.week-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--grid-color-primary, #ffffff);
+    border-radius: 8px;
+    filter: drop-shadow(0.25rem 0.25rem 0.30rem var(--shadow-color, rgba(0,0,0,0.1)));
+    position: relative; /* Needed context for sticky */
+}
+
+.week-header-grid {
+    display: grid;
+    grid-template-columns: var(--time-col-width) repeat(7, 1fr);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--grid-color-primary, #ffffff);
+    border-bottom: 1px solid var(--grid-border-color, #e0e0e0);
+}
+
+.header-day-cell {
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 600;
+    border-right: 1px solid var(--grid-border-color, #e0e0e0);
+    color: var(--text-color-primary, #333);
+    background: var(--grid-color-secondary, #f9f9f9);
+}
+
+.header-corner {
+    border-right: 1px solid var(--grid-border-color, #e0e0e0);
+    background: var(--grid-color-secondary, #ffffff);
+}
+
+
+.week-body {
+    overflow: visible;
+    height: auto;
+    width: 100%;
+}
+
+.week-body-grid {
+    display: grid;
+    grid-template-columns: var(--time-col-width) repeat(7, 1fr);
+    grid-template-rows: repeat(1440, 1px);
+    width: 100%;
+}
+
+.grid-row-line {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--grid-border-color, #e0e0e0);
+    pointer-events: none;
+}
+
+.grid-col-line {
+    grid-row: 1 / -1;
+    border-right: 1px dashed var(--grid-border-color, #e0e0e0);
+    pointer-events: none;
+}
+
+.time-label {
+    font-size: 11px;
+    color: var(--text-color-primary, #666);
+    position: relative;
+    top: -6px;
+    left: 10px;
+    width: var(--time-col-width);
+}
+
+.event {
+    margin: 1px 4px;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 11px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.week-view::-webkit-scrollbar {
+    width: 10px;
+}
+
+.week-view::-webkit-scrollbar-track {
+    background: var(--accent-color1, #f0f0f0);
+    border-radius: 0 8px 8px 0;
+}
+
+.week-view::-webkit-scrollbar-thumb {
+    background-color: var(--border-color, #c1c1c1);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.week-view::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-color-primary, #a8a8a8);
+}
