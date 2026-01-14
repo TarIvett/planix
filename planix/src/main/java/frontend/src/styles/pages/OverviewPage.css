@@ -101,6 +101,19 @@
     width: 100%;
     height: 100%;
 }
+.overview-notes-row {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    flex-wrap: wrap; /* responsive */
+}
+
+/* Dimensiuni echilibrate */
+.overview-notes-row > * {
+    flex: 1 1 320px;
+    max-width: 420px;
+}
+
 
 .overview-tasks{
     grid-area: tasks;
