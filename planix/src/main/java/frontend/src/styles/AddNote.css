@@ -1,0 +1,90 @@
+/* CARD-ul exterior — aceleași dimensiuni ca NoteCard */
+.add-note-card {
+    width: 100%;                    /* umple întreaga coloană din grid */
+    height: 100%;                   /* aceeași înălțime ca grid-auto-rows (240px) */
+    min-height: 240px;              /* înălțime minimă pentru consistență */
+    padding: 0;                     /* elimină padding-ul exterior */
+    box-sizing: border-box;
+    background: var(--accent-color1);
+    border-radius: 24px;
+    box-shadow: var(--note-shadow, 0 6px 20px rgba(0,0,0,.12));
+    cursor: pointer;
+    display: flex;                  /* folosește flex pentru centrare */
+    justify-content: center;
+    align-items: center;
+    transition: transform .12s ease, box-shadow .2s ease, background .3s ease;
+    border: none;                   /* elimină orice border implicit */
+}
+
+.add-note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,.16);
+}
+
+.add-note-card:focus-visible {
+    box-shadow: 0 0 0 3px var(--btn-bg, #FDA769), 0 10px 22px rgba(0,0,0,.16);
+    outline: none;
+}
+
+/* CORPUL interior — să umple întregul card */
+.add-note-inner {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 18px;            /* puțin mai mic decât card-ul exterior */
+    background: var(--accent-color3);
+    color: var(--text-color-primary);
+    border: 2px dashed rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.add-note-card:hover .add-note-inner {
+    border-color: var(--btn-bg, #FDA769);
+    background: var(--accent-color4);
+}
+
+/* conținut */
+.add-note-plus {
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--btn-bg, #FDA769);
+    transition: transform 0.2s ease;
+}
+
+.add-note-card:hover .add-note-plus {
+    transform: scale(1.1);
+}
+
+.add-note-text {
+    font-weight: 700;
+    opacity: .9;
+    font-size: 1.1rem;
+}
+
+/* Varianta compactă (dacă mai ai nevoie) */
+.add-note-card.is-compact {
+    /* Poți păstra opțiunea pentru variante mai mici dacă e necesar */
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .add-note-card {
+        min-height: 200px;          /* puțin mai mic pe mobile */
+    }
+
+    .add-note-plus {
+        font-size: 36px;
+    }
+
+    .add-note-text {
+        font-size: 1rem;
+    }
+}
