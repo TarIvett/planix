@@ -283,10 +283,9 @@ export default function TaskList({ category = "all", dateFilter = null, monthFil
                             ? `Showing tasks for: ${dateFilter.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}`
                             : monthFilter
                                 ? `Showing tasks for: ${monthFilter.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`
-                                : ''
+                                : ' '
                         }
                     </span>
-                    <span className="filter-count">{filteredTasks.length} task{filteredTasks.length !== 1 ? 's' : ''}</span>
                 </div>
             )}
 

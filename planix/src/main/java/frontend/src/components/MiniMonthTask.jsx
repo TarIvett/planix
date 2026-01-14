@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/MiniMonth.css";
 
-export default function MiniMonth({
+export default function MiniMonthTask({
                                       currentDate = new Date(),
                                       onDayClick,
                                       size = "default",

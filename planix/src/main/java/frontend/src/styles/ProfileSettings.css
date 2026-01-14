@@ -197,3 +197,12 @@
     cursor: not-allowed;
     transform: none;
 }
+
+.password-hint {
+    font-size: 11px;
+    color: #666;
+    text-align: left;
+    width: 90%;
+    margin: -8px 0 10px 0;
+    font-style: italic;
+}

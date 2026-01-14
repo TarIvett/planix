@@ -27,14 +27,34 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
         try {
+            if (user.getEmail() == null || user.getEmail().isBlank() ||
+                    user.getPassword() == null || user.getPassword().isBlank() ||
+                    user.getName() == null || user.getName().isBlank() ||
+                    user.getSurname() == null || user.getSurname().isBlank() ||
+                    user.getNickname() == null || user.getNickname().isBlank()) {
+
+                Map<String, String> error = new HashMap<>();
+                error.put("message", "All fields (Email, Password, First Name, Last Name, Nickname) are required!");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            }
+
             if (userService.findByEmail(user.getEmail()).isPresent()) {
                 Map<String, String> error = new HashMap<>();
                 error.put("message", "Email already exists");
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
             }
 
+            if (!userService.isPasswordValid(user.getPassword())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message",
+                        "The password must contain at least 8 characters, one uppercase letter, and one special character."));
+            }
+
+            if (!userService.isEmailValid(user.getEmail())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", "The email format is invalid!"));
+            }
+
             if (user.getProfilePictureId() == null) {
-                user.setProfilePictureId(1); // Default
+                user.setProfilePictureId(1);
             }
 
             User savedUser = userService.register(user);

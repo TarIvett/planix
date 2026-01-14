@@ -9,6 +9,7 @@ import { useUser } from "../UserContext.jsx";
 import GeneralSettings from "../components/GeneralSettings.jsx";
 import ProfileSettings from "../components/ProfileSettings.jsx";
 import MiniMonth from "../components/Views/MiniMonthView.jsx";
+import RecentTask from "../components/RecentTask.jsx";
 
 export default function OverviewPage() {
     const { user, loading } = useUser();
@@ -58,7 +59,7 @@ export default function OverviewPage() {
                                     <h1>Notes</h1>
                                 </div>
                                 <div className="overview-tasks">
-                                    <h1>Tasks</h1>
+                                    <RecentTask />
                                 </div>
                             </div>
                         </div>

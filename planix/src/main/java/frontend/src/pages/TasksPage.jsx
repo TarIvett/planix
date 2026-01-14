@@ -3,7 +3,7 @@ import NavButtons from "../components/NavButtons.jsx";
 import TaskNavButtons from "../components/TaskNavButtons.jsx";
 import AddTaskButton from "../components/AddTaskButton.jsx";
 import TaskList from "../components/TaskList.jsx";
-import MiniMonth from "../components/MiniMonth.jsx";
+import MiniMonthTask from "../components/MiniMonthTask.jsx";
 import "../styles/TaskPage.css";
 
 export default function TasksPage() {
@@ -173,7 +173,7 @@ export default function TasksPage() {
                     </div>
 
                     <div className="task-wrapper2">
-                        <MiniMonth
+                        <MiniMonthTask
                             currentDate={currentDate}
                             onDayClick={handleDayClick}
                             onMonthChange={handleMonthChange}

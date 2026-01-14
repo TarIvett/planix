@@ -1,4 +1,3 @@
-// backend/DTO/UpdateTaskRequest.java
 package backend.DTO;
 
 import java.time.LocalDateTime;

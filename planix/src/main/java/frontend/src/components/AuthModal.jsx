@@ -14,9 +14,34 @@ export default function AuthModal({ onClose }) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
+    const validatePassword = (pass) => {
+        const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+        return regex.test(pass);
+    };
+
+    const validateEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
     const handleSignUp = async () => {
+        if (!email.trim() || !password.trim() || !name.trim() || !surname.trim() || !nickname.trim()) {
+            setError("Please fill in all fields!");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address!");
+            return;
+        }
+
         if (password !== passwordAgain) {
             setError("Passwords don't match!");
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            setError("The password must contain at least 8 characters, one uppercase letter, and one special character!");
             return;
         }
 
@@ -68,13 +93,21 @@ export default function AuthModal({ onClose }) {
                     <>
                         <h2>Sign Up</h2>
                         {error && <p className="error">{error}</p>}
-                        <input type="text" placeholder="Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)} />
-                        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-                        <input type="text" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} />
-                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input type="password" placeholder="Password again" value={passwordAgain} onChange={(e) => setPasswordAgain(e.target.value)} />
-                        <button className="auth-single-btn" onClick={handleSignUp} disabled={loading}> {loading ? "Signing up..." : "Sign up"} </button>
+                        <input type="text" placeholder="Nickname" value={nickname}
+                               onChange={(e) => setNickname(e.target.value)}/>
+                        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" placeholder="Surname" value={surname}
+                               onChange={(e) => setSurname(e.target.value)}/>
+                        <input type="email" placeholder="Email" value={email}
+                               onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="password" placeholder="Password" value={password}
+                               onChange={(e) => setPassword(e.target.value)}/>
+                        <p style={{fontSize: '10px', color: 'gray', textAlign: 'left', width: '90%', margin: '0 auto'}}>
+                            *Minimum 8 characters, one uppercase letter, and one special character.                        </p>
+                        <input type="password" placeholder="Password again" value={passwordAgain}
+                               onChange={(e) => setPasswordAgain(e.target.value)}/>
+                        <button className="auth-single-btn" onClick={handleSignUp}
+                                disabled={loading}> {loading ? "Signing up..." : "Sign up"} </button>
                     </>
                 )}
 
