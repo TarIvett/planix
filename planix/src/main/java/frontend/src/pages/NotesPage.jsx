@@ -1,4 +1,6 @@
 import NavButtons from "../components/NavButtons.jsx";
+import React from "react";
+import "../components/NavButtons.jsx"
 import "../styles/NotesPageMain.css";
 import CategoryBar from "../components/CategoryButtons.jsx";
 import NoteCard from "../components/NoteCard.jsx";

@@ -3,7 +3,7 @@ import OverviewPage from "./pages/OverviewPage.jsx";
 import CalendarPage from "./pages/CalendarPage.jsx";
 import NotesPage from "./pages/NotesPage.jsx";
 import TasksPage from "./pages/TasksPage.jsx";
-import EditNote from "./pages/EditNote.jsx";            // ⬅️ adaugă importul
+import EditNote from "./pages/EditNote.jsx";
 
 export default function App() {
     return (
@@ -13,7 +13,7 @@ export default function App() {
                 <Route path="/calendar" element={<CalendarPage />} />
 
                 <Route path="/notes" element={<Navigate to="/notes/all" replace />} />
-                <Route path="/notes/edit/:id" element={<EditNote />} />   {/* ⬅️ ruta de editare */}
+                <Route path="/notes/edit/:id" element={<EditNote />} />
                 <Route path="/notes/:category" element={<NotesPage />} />
 
                 <Route path="/tasks" element={<TasksPage />} />

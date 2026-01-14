@@ -9,6 +9,7 @@ import { useUser } from "../UserContext.jsx";
 import GeneralSettings from "../components/GeneralSettings.jsx";
 import ProfileSettings from "../components/ProfileSettings.jsx";
 import MiniMonth from "../components/Views/MiniMonthView.jsx";
+import RecentTask from "../components/RecentTask.jsx";
 import AddNote from "../components/AddNote.jsx";
 import NoteCard from "../components/NoteCard.jsx";
 import { authFetch } from "../api/auth.js";
@@ -106,7 +107,7 @@ export default function OverviewPage() {
                                 </div>
 
                                 <div className="overview-tasks">
-                                    <h1>Tasks</h1>
+                                    <RecentTask />
                                 </div>
                             </div>
                         </div>

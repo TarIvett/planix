@@ -98,6 +98,12 @@ public class UserController {
                         String currentPassword = passwordData.get("currentPassword");
                         String newPassword = passwordData.get("newPassword");
 
+                        if (!userService.isPasswordValid(newPassword)) {
+                            Map<String, String> error = new HashMap<>();
+                            error.put("message", "The password must contain at least 8 characters, one uppercase letter, and one special character.");
+                            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body((Object) error);
+                        }
+
                         if (!userService.verifyPassword(currentPassword, user.getPassword())) {
                             Map<String, String> error = new HashMap<>();
                             error.put("message", "Current password is incorrect");

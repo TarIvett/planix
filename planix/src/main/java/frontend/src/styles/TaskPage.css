@@ -1,0 +1,112 @@
+.task-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    color: var(--text-color-primary);
+}
+
+.task-main-wrapper {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:
+    "nav"
+    "main";
+}
+
+.task-main-item1 {
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-main-item2 {
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.task-wrapper1 {
+    display: grid;
+    width: 70%;
+    height: 95%;
+    margin-left:3%;
+    grid-template-rows: 10% 90%;
+}
+
+.task-wrapper2 {
+    width: 30%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px;
+
+}
+
+.item1Task {
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.item2Task{
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.category-content {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    animation: fadeIn 0.3s ease;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.category-content h2 {
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0;
+}
+
+.task-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    align-items: start;
+}

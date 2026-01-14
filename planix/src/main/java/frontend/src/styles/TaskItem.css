@@ -1,0 +1,261 @@
+.task-item {
+    background: color-mix(in srgb, var(--btn-bg) 85%, transparent 15%);
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    margin-bottom: 0;
+    border: 1px solid color-mix(in srgb, var(--accent-color2) 30%, transparent 70%);
+    box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 color-mix(in srgb, white 20%, transparent 80%);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color1);
+    opacity: 0.7;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 color-mix(in srgb, white 25%, transparent 75%);
+    background: color-mix(in srgb, var(--btn-bg) 92%, transparent 8%);
+    border-color: color-mix(in srgb, var(--accent-color1) 40%, transparent 60%);
+}
+
+
+.task-content {
+    display: grid;
+    grid-template-columns: auto 120px 1fr auto;
+    grid-template-areas:
+        "bullet time title checkbox"
+        "bullet category description checkbox";
+    gap: 0.5rem 1rem;
+    align-items: start;
+}
+
+
+.task-color-indicator {
+    grid-area: bullet;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-top: 0.2rem;
+    border: 2px solid color-mix(in srgb, currentColor 30%, transparent 70%);
+    box-shadow:
+            0 0 0 2px color-mix(in srgb, var(--btn-bg) 60%, transparent 40%),
+            0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.task-time {
+    grid-area: time;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    background: color-mix(in srgb, var(--accent-color1) 20%, transparent 80%);
+    padding: 0.4rem 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid color-mix(in srgb, var(--accent-color1) 30%, transparent 70%);
+    line-height: 1.3;
+    min-width: 100px;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+
+.task-category-badge {
+    grid-area: category;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.6rem;
+    background: color-mix(in srgb, var(--accent-color2) 15%, transparent 85%);
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--accent-color2) 25%, transparent 75%);
+    white-space: nowrap;
+}
+
+.category-icon {
+    font-size: 0.8rem;
+}
+
+.category-name {
+    color: var(--text-color-primary);
+    text-transform: capitalize;
+    opacity: 0.9;
+}
+
+
+.task-details {
+    grid-area: title;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.task-title {
+    grid-area: title;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color-primary);
+    margin: 0;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.task-description {
+    grid-area: description;
+    font-size: 0.9rem;
+    color: var(--text-color-primary);
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.85;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.task-checkbox {
+    grid-area: checkbox;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    font-size: 14px;
+    font-weight: bold;
+    color: transparent;
+    align-self: start;
+    margin-top: 0.2rem;
+}
+
+.task-checkbox:hover {
+    border-color: var(--accent-color1);
+    background: color-mix(in srgb, var(--accent-color1) 10%, transparent 90%);
+    transform: scale(1.1);
+}
+
+.task-checkbox.checked {
+    background: var(--accent-color1);
+    border-color: var(--accent-color1);
+    color: white;
+    transform: scale(1.1);
+}
+
+.task-checkbox.checked:hover {
+    background: color-mix(in srgb, var(--accent-color1) 80%, transparent 20%);
+    border-color: color-mix(in srgb, var(--accent-color1) 80%, transparent 20%);
+}
+
+
+.task-item:focus-within {
+    border-color: var(--accent-color1);
+    box-shadow:
+            0 0 0 3px color-mix(in srgb, var(--accent-color1) 20%, transparent 80%),
+            0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+@keyframes taskComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.task-checkbox.checked {
+    animation: taskComplete 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .task-content {
+        display: grid;
+        grid-template-columns: auto 100px 1fr auto;
+        grid-template-areas:
+        "bullet time title checkbox"
+        "bullet category description checkbox";
+        gap: 0.5rem 1rem;
+        align-items: start;
+        min-height: 70px;
+    }
+
+    .task-item {
+        padding: 1rem 0.8rem;
+    }
+
+    .task-checkbox {
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-content {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "bullet checkbox"
+            "time time"
+            "category category"
+            "title title"
+            "description description";
+        text-align: center;
+    }
+
+    .task-color-indicator {
+        justify-self: start;
+    }
+
+    .task-checkbox {
+        justify-self: end;
+    }
+}
+
+.task-item.completed {
+    opacity: 0.7;
+    background: color-mix(in srgb, var(--btn-bg) 70%, transparent 30%);
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: color-mix(in srgb, var(--text-color-primary) 60%, transparent 40%);
+}
+
+.task-item.completed .task-description {
+    text-decoration: line-through;
+    color: color-mix(in srgb, var(--text-color-primary) 50%, transparent 50%);
+}
+
+.task-item.completed .task-time,
+.task-item.completed .task-category-badge {
+    opacity: 0.6;
+}
+
+.task-item.completed .task-color-indicator {
+    opacity: 0.5;
+}
+
+
+.task-item.completed:hover {
+    transform: none;
+    box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 color-mix(in srgb, white 20%, transparent 80%);
+}

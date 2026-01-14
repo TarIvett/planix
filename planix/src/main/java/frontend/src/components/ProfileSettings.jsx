@@ -28,10 +28,16 @@ export default function ProfileSettings({setActiveTab}) {
 
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
-        setLoading(true);
         setError("");
         setMessage("");
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError("The entered email is not valid!");
+            return;
+        }
+
+        setLoading(true);
         try {
             await updateProfile({ nickname, name, surname, email });
             setMessage("Profile updated successfully! ✓");
@@ -45,9 +51,17 @@ export default function ProfileSettings({setActiveTab}) {
 
     const handlePasswordChange = async (e) => {
         e.preventDefault();
+        setError("");
+        setMessage("");
 
         if (newPassword !== confirmPassword) {
             setError("Passwords don't match!");
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+        if (!passwordRegex.test(newPassword)) {
+            setError("The new password does not meet the rules: at least 8 characters, one uppercase letter, and a symbol.");
             return;
         }
 
@@ -86,21 +100,28 @@ export default function ProfileSettings({setActiveTab}) {
                     {error && <div className="error-message">{error}</div>}
 
                     <h3>Personal Information</h3>
-                    <input type="text" placeholder="Nickname" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
+                    <input type="text" placeholder="Nickname" value={nickname}
+                           onChange={(e) => setNickname(e.target.value)}/>
                     <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
-                    <input type="text" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)}/>
+                    <input type="text" placeholder="Surname" value={surname}
+                           onChange={(e) => setSurname(e.target.value)}/>
                     <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                     <button className="btn-update" onClick={handleProfileUpdate} disabled={loading}>
                         {loading ? "Updating..." : "Update Profile"}
                     </button>
 
-                    <hr className="divider" />
+                    <hr className="divider"/>
 
                     <h3>Change Password</h3>
-                    <input type="password" placeholder="Current Password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)}/>
-                    <input type="password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}/>
-                    <input type="password" placeholder="Confirm New Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                    <input type="password" placeholder="Current Password" value={currentPassword}
+                           onChange={(e) => setCurrentPassword(e.target.value)}/>
+                    <input type="password" placeholder="New Password" value={newPassword}
+                           onChange={(e) => setNewPassword(e.target.value)}/>
+                    <p className="password-hint">
+                        *Minimum 8 characters, one uppercase letter, and one special character                    </p>
+                    <input type="password" placeholder="Confirm New Password" value={confirmPassword}
+                           onChange={(e) => setConfirmPassword(e.target.value)}/>
 
                     <button className="btn-update" onClick={handlePasswordChange} disabled={loading}>
                         {loading ? "Changing..." : "Change Password"}

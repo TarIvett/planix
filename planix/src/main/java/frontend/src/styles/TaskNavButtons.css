@@ -1,0 +1,38 @@
+.task-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.task-nav button {
+    background-color: transparent;
+    border: 2px solid var(--btn-bg);
+    color: var(--text-color-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.task-nav button:hover {
+    background-color: var(--btn-bg);
+    color: var(--text-color-secondary);
+}
+
+.task-nav .active {
+    background-color: var(--btn-bg-active);
+    color: var(--text-color-secondary);
+    border-color: var(--btn-bg-active);
+}
+
+.task-nav .chip-ico {
+    line-height: 0;
+}

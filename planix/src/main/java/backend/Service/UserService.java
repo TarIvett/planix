@@ -32,5 +32,16 @@ public class UserService {
     public boolean verifyPassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
-}
 
+    public boolean isPasswordValid(String password) {
+        if (password == null) return false;
+        String passwordRegex = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>]).{8,}$";
+        return password.matches(passwordRegex);
+    }
+
+    public boolean isEmailValid(String email) {
+        if (email == null) return false;
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-z]{2,}$";
+        return email.matches(emailRegex);
+    }
+}

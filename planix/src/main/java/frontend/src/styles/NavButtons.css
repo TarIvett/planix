@@ -1,4 +1,5 @@
-button, button:hover, button:focus, button:active {
+.nav-button, .nav-button:hover, .nav-button:focus, .nav-button:active
+{
     grid-area: nav;
     background-color: transparent;
     border: none;
