@@ -62,7 +62,7 @@
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template-rows: 55% 40%;
+    grid-template-rows: 45% 50%;
     grid-template-areas: "settings" "calendar";
 }
 
@@ -71,7 +71,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 60%;
 }
 
 .overview-user{
@@ -82,7 +82,28 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.overview-user::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overview-user::-webkit-scrollbar-track {
+    background: var(--accent-color1);
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+.overview-user::-webkit-scrollbar-thumb {
+    background: var(--border-color, #ccc);
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.overview-user::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color-primary, #999);
 }
 
 .overview{
