@@ -1,0 +1,35 @@
+.category-bar button,
+.category-bar button:hover,
+.category-bar button:focus,
+.category-bar button:active {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color-primary);
+    border-radius: 9999px; /* pill look */
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font: inherit;
+    font-weight: 600; /* <-- adaugă asta pentru text mai îngroșat */
+}
+
+.category-bar .btn-background {
+    border-radius: 9999px;
+    background-color: var(--btn-bg);
+    filter: drop-shadow(0.25rem 0.25rem 0.25rem var(--shadow-color));
+    padding: 0.5rem 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-bar .active,
+.category-bar .active:hover,
+.category-bar .active:focus,
+.category-bar .active:active {
+    border: none;
+    outline: none;
+    background-color: var(--btn-bg-active);
+    color: var(--text-color-secondary);
+}
