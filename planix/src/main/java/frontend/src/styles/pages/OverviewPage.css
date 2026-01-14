@@ -113,9 +113,6 @@
     flex: 1 1 320px;
     max-width: 420px;
 }
-
-
-
 .overview-tasks{
     grid-area: tasks;
     display: flex;
