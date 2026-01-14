@@ -26,6 +26,10 @@ export default function OverviewPage() {
 
 
     useEffect(() => {
+        if (!loading && !user) {
+            setAuthOpen(true);
+        }
+
         const loadLatestNote = async () => {
             if (!user) return; // nu cere notițe dacă nu e logat
 
@@ -63,8 +67,7 @@ export default function OverviewPage() {
         };
 
         loadLatestNote();
-    }, [user]);
-
+    }, [loading, user]);
 
     const renderContent = () => {
         switch (activeTab) {
