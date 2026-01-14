@@ -1,0 +1,79 @@
+/* styles/RecentTask.css - FOARTE SIMPLU */
+.simple-task-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.simple-task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.simple-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin: 0;
+}
+
+.simple-view-btn {
+    background: var(--accent-color1);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.simple-view-btn:hover {
+    background: color-mix(in srgb, var(--accent-color1) 90%, black 10%);
+}
+
+.simple-task-content {
+    flex: 1;
+}
+
+.simple-task-wrapper {
+    height: 100%;
+}
+
+.simple-task-wrapper .task-item {
+    margin: 0;
+    height: 100%;
+}
+
+.simple-no-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+}
+
+.simple-no-tasks p {
+    color: var(--text-color-secondary);
+}
+
+.simple-create-btn {
+    background: var(--accent-color1);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.simple-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-color-secondary);
+}
