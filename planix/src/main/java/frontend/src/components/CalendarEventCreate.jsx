@@ -40,7 +40,7 @@ export default function CalendarEventCreate({ onClose, onSave, selectedDate, ini
         date: selectedDate || new Date().toISOString().split('T')[0],
         startTime: '09:00',
         endTime: '10:00',
-        description: '',
+        description: 'Descriere',
         color: '#a855f7',
         category: 'event'
       });
@@ -65,8 +65,7 @@ export default function CalendarEventCreate({ onClose, onSave, selectedDate, ini
       endTime: eventData.endTime,
       description: eventData.description,
       color: eventData.color,
-      userId: user.id,
-      id: initialData ? initialData.id : undefined
+      userId: user.id
     };
 
     onSave(payload);
