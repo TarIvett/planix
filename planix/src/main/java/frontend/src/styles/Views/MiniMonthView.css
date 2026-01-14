@@ -1,6 +1,6 @@
-.mini-month {
+.mini-month-view {
     display: grid;
-    height: 90%;
+    height: 92%;
     grid-template-rows: 15% 10% auto;
     align-items: center;
     background-color: var(--grid-color-primary);
@@ -9,15 +9,15 @@
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-.mini-month-name {
-    font-size: 0.7em;
+.mini-month-view-name {
+    font-size: 0.8em;
     margin: 0.3em 0;
     text-align: center;
     cursor: pointer;
     color: var(--text-color-primary);
 }
 
-.mini-month-grid {
+.mini-month-view-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
@@ -27,7 +27,7 @@
     width: 100%;
 }
 
-.mini-day {
+.mini-view-day {
     width: 1.6em;
     height: 1.6em;
     display: flex;
@@ -37,14 +37,14 @@
     align-content: center;
     place-self: center;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%; /* makes it a circle */
     cursor: pointer;
     transition: background-color 0.2s;
     color: var(--text-color-primary);
 }
 
 
-.mini-weekdays {
+.mini-view-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
@@ -56,23 +56,23 @@
     border-bottom: 1px solid var(--accent-color1);
 }
 
-.mini-weekday {
+.mini--view-weekday {
     font-size: 0.6em;
     text-align: center;
     font-weight: bold;
     color: var(--accent-color1);
 }
 
-.mini-day:hover {
+.mini-view-day:hover {
     background-color: var(--accent-color3);
 }
 
-.mini-day.today {
+.mini-view-day.today {
     background-color: var(--accent-color2);
     color: var(--text-color-secondary);
 }
 
-.mini-day.event {
+.mini-view-day.event {
     background-color: var(--event-color);
     color: var(--text-color-secondary);
 }

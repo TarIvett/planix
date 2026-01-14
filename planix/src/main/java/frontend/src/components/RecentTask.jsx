@@ -81,7 +81,7 @@ export default function RecentTask() {
     return (
         <div className="simple-task-container">
             <div className="simple-task-header">
-                <h3 className="simple-title">Recent Tasks</h3> {/* Schimbă titlul */}
+                <h1>Tasks</h1>
                 <button
                     className="simple-view-btn"
                     onClick={handleViewAll}

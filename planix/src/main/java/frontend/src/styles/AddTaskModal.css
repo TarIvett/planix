@@ -152,6 +152,7 @@
     transition: all 0.2s ease;
     font-size: 0.85rem;
     white-space: nowrap;
+    color: var(--text-color-primary);
 }
 
 .addtask-category-option.selected {

@@ -70,7 +70,7 @@
     background-color: var(--accent-color1);
     color: var(--text-color-secondary);
     width: 90%;
-    margin: 1em;
+    margin: 0.5em;
     border-radius: var(--brd-radius-btn);
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -81,7 +81,7 @@
     background-color: var(--accent-color1);
     color: var(--text-color-secondary);
     width: 90%;
-    margin: 1em;
+    margin: 0.5em;
     border-radius: var(--brd-radius-btn);
     padding: 0.5rem 1rem;
     cursor: pointer;

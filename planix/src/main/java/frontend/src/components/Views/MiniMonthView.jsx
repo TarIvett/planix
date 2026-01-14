@@ -56,16 +56,16 @@ export default function MiniMonth({ currentDate, setCurrentDate, setView, events
     };
 
     return (
-        <div className="mini-month">
-            <h5 className="mini-month-name" onClick={handleHeaderClick}>
+        <div className="mini-month-view">
+            <h5 className="mini-month-view-name" onClick={handleHeaderClick}>
                 {currentDate.toLocaleString("default", { month: "long" })}
             </h5>
 
-            <div className="mini-weekdays">
-                {weekDays.map((d, idx) => <div key={idx} className="mini-weekday">{d}</div>)}
+            <div className="mini-view-weekdays">
+                {weekDays.map((d, idx) => <div key={idx} className="mini-view-weekday">{d}</div>)}
             </div>
 
-            <div className="mini-month-grid">
+            <div className="mini-month-view-grid">
                 {daysArray.map((day, index) => {
                     const dateObj = day ? new Date(year, month, day) : null;
                     const isToday = dateObj && dateObj.toDateString() === new Date().toDateString();
@@ -76,7 +76,7 @@ export default function MiniMonth({ currentDate, setCurrentDate, setView, events
                     return (
                         <div
                             key={index}
-                            className={`mini-day ${isToday ? "today" : ""} ${event ? "has-event" : ""}`}
+                            className={`mini-view-day ${isToday ? "today" : ""} ${event ? "has-event" : ""}`}
                             style={style}
                             onClick={() => handleDayClick(day)}
                         >
