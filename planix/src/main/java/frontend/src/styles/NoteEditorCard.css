@@ -1,0 +1,153 @@
+/* styles/NoteEditorCard.css */
+.note-editor-card {
+    background: var(--auth-bg);
+    border-radius: 40px;
+    padding: 16px 18px 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+
+    /* AICI SUNT LINIILE IMPORTANTE: */
+    height: 90%;       /* Forțează cardul să aibă înălțimea părintelui */
+    width: 90%;
+    overflow: hidden;   /* Ascunde orice iese din colțurile rotunjite */
+    display: flex;
+    flex-direction: column;
+}
+
+.nec-title-row{
+    display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;
+}
+.nec-title{
+    font-size:28px;font-weight:700;border:none;background:transparent;outline:none;width:100%;
+}
+.nec-meta{opacity:.6;font-size:14px;white-space:nowrap;margin-left:12px;}
+
+.nec-toolbar{
+    display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid rgba(0,0,0,.12);
+    padding-top:8px;margin-bottom:10px;
+}
+.nec-left{display:flex;gap:14px;align-items:center;}
+.nec-cat-label{font-weight:600;margin-right:6px;}
+.nec-fav input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--accent-color1);
+    background: var(--btn-bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+
+.nec-fav input[type="checkbox"]::before{
+    content: "♥";
+    font-size: 12px;
+    color: var(--accent-color1);
+    opacity: 0;
+    transform: scale(.5);
+    transition: opacity .15s ease, transform .15s ease, color .15s ease;
+}
+
+.nec-fav input[type="checkbox"]:hover{
+    transform: translateY(-1px);
+}
+
+.nec-fav input[type="checkbox"]:checked{
+    background: var(--accent-color1);
+    border-color: var(--accent-color1);
+}
+
+.nec-fav input[type="checkbox"]:checked::before{
+    opacity: 1;
+    transform: scale(1);
+    color: #fff;
+}
+
+.nec-fav span{
+    font-weight: 500;
+}
+
+.nec-cat select{
+    border-radius: 999px;
+    border: none;
+    padding: 6px 16px;
+    background: var(--btn-bg);
+    color: var(--text-color-primary);
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.nec-cat select:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+.nec-cat select:focus{
+    outline: 2px solid var(--accent-color1);
+    outline-offset: 2px;
+}
+
+.nec-right{display:flex;gap:6px;}
+.nec-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+
+    /* 1. FOLOSIM VARIABILA DE FUNDAL */
+    /* Folosim --btn-bg pentru a fi la fel ca dropdown-ul de categorii */
+    background: var(--btn-bg);
+
+    /* Ne asigurăm că textul are culoarea corectă */
+    color: var(--text-color-primary);
+
+    font-weight: 700;
+    cursor: pointer;
+
+    /* Adăugăm o tranziție fină pentru când pui mouse-ul peste */
+    transition: all 0.2s ease;
+}
+
+.nec-btn:hover {
+    /* 2. HOVER DINAMIC */
+    /* Când pui mouse-ul, butonul ia culoarea principală a temei (ex: mov) */
+    background: var(--accent-color1);
+
+    /* Textul devine alb pentru contrast bun */
+    color: #fff;
+
+    /* Mic efect de ridicare (opțional, dar arată bine) */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.nec-editor {
+    /* flex: 1 spune: "Ocupă tot spațiul rămas liber între Header și Footer" */
+    flex: 1;
+
+    /* Asta activează scroll-ul DOAR pe text, nu pe tot cardul */
+    overflow-y: auto;
+
+    /* Restul stilurilor tale rămân la fel */
+    padding: 20px 18px;
+    border-radius: 10px;
+    outline: none;
+    line-height: 1.8;
+    font-size: 18px;
+    background: transparent;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.nec-editor:empty:before{content:attr(placeholder);opacity:.5}
+
+.nec-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+.nec-primary{background:#6a4df5;color:#fff;border:none;border-radius:10px;padding:8px 14px;cursor:pointer}
+.nec-secondary{background:transparent;border:1px solid rgba(0,0,0,.2);border-radius:10px;padding:8px 14px;cursor:pointer}
