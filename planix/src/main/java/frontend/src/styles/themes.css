@@ -23,6 +23,7 @@
     --auth-bg: #F9EBFF;
     --auth-input: #fff;
     --auth-text: #aaa;
+    --event-color: #8A00C4;
 }
 
 [data-theme="dark"] {
@@ -48,6 +49,7 @@
     --auth-bg: #222;
     --auth-input: #333;
     --auth-text: #aaa;
+    --event-color: #8A00C4;
 }
 
 [data-theme="autumn"] {
@@ -73,4 +75,5 @@
     --auth-bg: #686D69;
     --auth-input: #D6BEA9;
     --auth-text: #555;
+    --event-color: #D6C0A9;
 }
